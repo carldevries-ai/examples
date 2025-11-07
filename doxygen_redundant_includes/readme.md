@@ -45,3 +45,12 @@ The program can be compiled with `clang src/file2.c -o src/filetwoprogram`.
 No -I flags are necessary because the headers are in src/ with the source file.
 Remember `clang -c src/file2.c -o src/file2.o` will compile only and then linking is done with `clang src/file2.o -o src/filetwoprogram`.
 You can get preprocessor output with `-E` and leave in the preprocessor directive names with `-dD` and the full command is `clang -E -dD src/filetwo.c -o src/filetwo.i`.
+
+Find the `PREDEFINED` configuration in Doxyfile and see that I set it equal to
+`PREDEFINED             = "DOXY_PREDEFINED=1"`. The value of DOXY_PREDEFINED 
+demonstrates how to toggle macros from the command line to test different configurations.
+When DOXY_PREDEFINED=1, then file3.h shows up in the include graph for file2.c, but is
+missing when DOXY_PREDEFINED=0. I needed to also ensure `ENABLE_PREPROCESSING=YES` and `MACRO_EXPANSION=YES`.
+The inclusion of fizz in the call graph for main is not sensitive to how macros are set in the headers, source, or Doxygen config. It will always show up.
+
+TODO: Investigate Doxygen clang options.

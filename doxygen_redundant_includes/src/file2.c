@@ -2,6 +2,10 @@
 #include "file1.h"
 #include "file2.h"
 
+#if DOXY_PREDEFINED
+#include "file3.h"
+#endif
+
 int main(int argc, char *argv[])
 {
 #if MYDEFINE
@@ -9,6 +13,10 @@ int main(int argc, char *argv[])
 #endif
 
     bar();
+
+#if DOXY_PREDEFINED
+    fizz();
+#endif
 }
 
 #if MYDEFINE
