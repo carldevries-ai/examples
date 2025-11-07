@@ -3,30 +3,34 @@
 These instructions are for Linux or WSL.
 
 1. Install Doxygen and Graphviz.
+
 `sudo apt install doxygen graphviz`
 
 2. To recreated this example, create a Doxygen config file. Otherwise, open your project's existing Doxygen file.
+
 `doxygen -g Doxyfile`
 
 3. If you're trying to replicate this example, leave everything as the default except for the following items ChatGPT instructed me to verify. Otherwise, set these in your project's Doxygen file.
-`
-# Generate include dependency graphs
-HAVE_DOT = YES
-DOT_PATH = /usr/bin   # path to Graphviz dot executable
-CALL_GRAPH = YES
-CALLER_GRAPH = YES
-INCLUDE_GRAPH = YES     # shows what each file includes
-INCLUDED_BY_GRAPH = YES # shows which files include this file
-
-# Only process your project headers
-EXTRACT_ALL = YES
-RECURSIVE = YES
-INPUT = ./src          # path to your source code`
+```
+    # Generate include dependency graphs
+    HAVE_DOT = YES
+    DOT_PATH = /usr/bin   # path to Graphviz dot executable
+    CALL_GRAPH = YES
+    CALLER_GRAPH = YES
+    INCLUDE_GRAPH = YES     # shows what each file includes
+    INCLUDED_BY_GRAPH = YES # shows which files include this file
+    
+    # Only process your project headers
+    EXTRACT_ALL = YES
+    RECURSIVE = YES
+    INPUT = ./src          # path to your source code
+```
 
 As I write this, it is my first time using Doxygen, so
-TODO: Read the Doxygen comments for each of these to better understand what each controls.
+TODO: Read the Doxygen comments for each of these to better understand what each option controls.
 
 4. Run Doxygen.
+
 `doxygen Doxyfile`
 
 5. Open the html/index.html file.
